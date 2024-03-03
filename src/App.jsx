@@ -3,10 +3,13 @@ import {Routes, Route} from "react-router-dom";
 import {useState} from "react";
 import HomePage from './component/HomePage';
 import DetailNews from './component/DetailNews';
+import DetailSearchNews from './component/DetailSearchNews';
+import DetailFavorite from './component/DetailFavorite';
 
 function App() {
   const [searchCategory, setSearchCategory]= useState();
   const [searchNews, setSearchNews]= useState();
+  const [favorites,setNewsInFavorite] = useState([]);
   const [news, setNews] = useState();
 
   const apiKeys = "37e25ceca4504772b0012e11ddd81a33";
@@ -32,9 +35,13 @@ function App() {
           searchNews={searchNews}
           setSearchNews={setSearchNews}
           news={news}
-          setNews={setNews}/>}/>
+          setNews={setNews}
+          favorites={favorites}
+          setNewsInFavorite={setNewsInFavorite}/>}/>
+
         <Route path="/News/:id" element={<DetailNews news={news}/>}/>
         <Route path="/News/search/:id" element={<DetailSearchNews searchNews={searchNews}/>}/>
+        <Route path="/favorites/:id" element={<DetailFavorite favorites={favorites}/>}/>
       </Routes>
     </>
   );
