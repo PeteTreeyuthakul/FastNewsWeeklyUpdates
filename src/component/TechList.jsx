@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
-
-
+import ButtonAdd from "./ButtonAddToFavorite";
 
 const TechNewsLists=({apiKeys,formatStartDate,formatEndDate,
-  news, setNews}) =>{
+  news, setNews,
+  favorites, setNewsInFavorite}) =>{
 
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -24,45 +24,50 @@ const TechNewsLists=({apiKeys,formatStartDate,formatEndDate,
           setHasError(true);
         },
       );
-    }, []);
+    },[]
+  );
 
-    if (hasError) {
-      return <h1>Error</h1>;
-    }
-  
-    if (isLoading) {
-      return <h1>Loading...</h1>;
-    }
-       debugger
-    return(
-        news.articles.map((subNews,index) => {
-            return(
-            <>     
-                <ul>
-                <li className="listShip" key={index}>
-                    <Link to ={`News/${index}`}>
-                      <div className="containerShip">
-                        <div className="wordingShipList">
-                            <img src={subNews.urlToImage}></img>  
-                        </div>
-                        <div className="wordingShipList">
-                            <p>{subNews.title}</p>
-                        </div>
-                        <div className="wordingShipList">
-                            <p>{subNews.description}</p>
-                        </div>
-                        <div className="wordingShipList">
-                            <p>{subNews.source.name}</p>
-                            <p>{subNews.publishedAt}</p>
-                        </div>
-                      </div>
-                    </Link>   
-                </li>    
-                </ul>
-            </>
-            )
-        })
-    )
+  if (hasError) {
+    return <h1>Error</h1>;
+  }
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+  return(
+    news.articles.map((subNews,index) => {
+      return(
+        <>     
+          <ul>
+            <li className="listShip" key={index}>
+                <Link to ={`News/${index}`}>
+                  <div className="containerShip">
+                    <div className="wordingShipList">
+                        <img src={subNews.urlToImage}></img>  
+                    </div>
+                    <div className="wordingShipList">
+                        <p>{subNews.title}</p>
+                    </div>
+                    <div className="wordingShipList">
+                        <p>{subNews.description}</p>
+                    </div>
+                    <div className="wordingShipList">
+                        <p>{subNews.source.name}</p>
+                        <p>{subNews.publishedAt}</p>
+                    </div>
+                  </div>
+                </Link>
+                <ButtonAdd subNews={subNews} news={news} 
+                  index={index} 
+                  favorites={favorites} setNewsInFavorite={setNewsInFavorite}
+                />   
+            </li>    
+          </ul>
+        </>
+      )
+    })
+  )
 }
 
 export default TechNewsLists;

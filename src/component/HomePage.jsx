@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import TechNewsLists from './TechList';
 import SearchNewsList from './SearchList';
+import FavoriteList from './FavoriteList';
 
 const HomePage=({apiKeys, formatStartDate, formatEndDate,
     searchCategory,setSearchCategory,
     searchNews,setSearchNews,
-    news, setNews}) =>{
+    news, setNews,
+    favorites, setNewsInFavorite}) =>{
 
     //Search Function
 
@@ -14,18 +16,39 @@ const HomePage=({apiKeys, formatStartDate, formatEndDate,
 
     const handleSearch = ()=>{
         setIsSearchPerformed(true);
-}
+    }
+
+    //Add Favorite
+
+    const [favoriteClassState,favoriteSetClassState] = useState(true);
+  
+    function hiddenFavorite(){
+      favoriteSetClassState(favoriteClassState=>!favoriteClassState)
+    }
+  
+    let favoriteHiddenClass = favoriteClassState ? 'hidden' :'';
 
     return(
         <>
             <h1 className='topic'>TECH NEWS UPDATE THIS WEEK</h1>
+
+            <div className={`mainCart ${favoriteHiddenClass}`} >
+                <button className='cost'
+                    onClick={()=>hiddenFavorite()}
+                    id='btnCart'>Favorite
+                </button>
+                <FavoriteList favorites ={favorites} setNewsInFavorite={setNewsInFavorite}/>
+            </div>
 
             <div className='mainListTech'>
                 <TechNewsLists apiKeys={apiKeys} 
                     formatStartDate={formatStartDate} 
                     formatEndDate={formatEndDate}
                     news={news}
-                    setNews={setNews}/>
+                    setNews={setNews}
+                    favorites={favorites}
+                    setNewsInFavorite={setNewsInFavorite}
+                />
             </div>
 
             <div className="searchContainer">
@@ -34,7 +57,7 @@ const HomePage=({apiKeys, formatStartDate, formatEndDate,
                 onChange={(event)=>setSearchCategory(event.target.value)}
                 value={searchCategory}>
                 <option value="choose" selected="selected" disabled>
-                Choose one
+                    Choose one
                 </option>
                 <option value="business">business</option>
                 <option value="science">science</option>
