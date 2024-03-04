@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TechNewsLists from './TechList';
 import SearchNewsList from './SearchList';
 import FavoriteList from './FavoriteList';
@@ -12,9 +12,12 @@ const HomePage=({apiKeys, formatStartDate, formatEndDate,
     //Search Function
 
     const [isSearchPerformed, setIsSearchPerformed] = useState(false);
-    console.log(searchNews)
+    useEffect(() => {
+        setIsSearchPerformed(false);
+    }, [searchCategory]);
 
     const handleSearch = ()=>{
+        setIsSearchPerformed(false)
         setIsSearchPerformed(true);
     }
 
@@ -53,12 +56,11 @@ const HomePage=({apiKeys, formatStartDate, formatEndDate,
 
             <div className="searchContainer">
             <label>Category:</label>
-            <select class="form-control" name="type-item" id="type-item"
+            <select className="form-control" name="type-item" id="type-item"
                 onChange={(event)=>setSearchCategory(event.target.value)}
+                defaultValue={"choose"}
                 value={searchCategory}>
-                <option value="choose" selected="selected" disabled>
-                    Choose one
-                </option>
+                <option value="choose" disabled></option>
                 <option value="business">business</option>
                 <option value="science">science</option>
                 <option value="health">health</option>
