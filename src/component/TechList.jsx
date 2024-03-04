@@ -9,8 +9,9 @@ const TechNewsLists=({apiKeys,formatStartDate,formatEndDate,
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
+
   useEffect(() => {
-    fetch(`https://newsapi.org/v2/top-headlines?country=us&category=Technology&from=${formatStartDate}&to=${formatEndDate}&sortBy=publishedAt&apiKey=${apiKeys}&pageSize=30`)
+    fetch(`https://gnews.io/api/v4/top-headlines?category=technology&country=us&from=${formatStartDate}&to=${formatEndDate}&apikey=${apiKeys}`)
 
       .then((response) => response.json())
       .then(
@@ -34,7 +35,7 @@ const TechNewsLists=({apiKeys,formatStartDate,formatEndDate,
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
-
+  console.log(news);
   return(
     news.articles.map((subNews,index) => {
       return(
