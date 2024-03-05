@@ -43,4 +43,17 @@ const ButtonAdd =({subNews, news, index,
     }
 
 }
+
+ButtonAdd.propTypes = {
+    subNews: PropTypes.objectOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+        }),
+      ).isRequired,
+    news: PropTypes.object.isRequired,
+    index: PropTypes.number.isRequired,
+    favorites: PropTypes.array,
+    setNewsInFavorite: PropTypes.func.isRequired
+};
+
 export default ButtonAdd;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import ButtonAdd from "./ButtonAddToFavorite";
+import PropTypes from 'prop-types';
 
 const TechNewsLists=({apiKeys,formatStartDate,formatEndDate,
   news, setNews,
@@ -35,34 +36,38 @@ const TechNewsLists=({apiKeys,formatStartDate,formatEndDate,
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
-  console.log(news);
+
   return(
     news.articles.map((subNews,index) => {
       return(
         <>     
           <ul>
-            <li className="listShip" key={index}>
+            <li className="newsList" key={index}>
                 <Link to ={`News/${index}`}>
-                  <div className="containerShip">
-                    <div className="wordingShipList">
-                        <img src={subNews.urlToImage}></img>  
+                  <div className="mainNewsList"/*row*/>
+                    <div className="boxImageNewsList">
+                        <img src={subNews.image} alt="No Image"></img>  
                     </div>
-                    <div className="wordingShipList">
-                        <p>{subNews.title}</p>
-                    </div>
-                    <div className="wordingShipList">
-                        <p>{subNews.description}</p>
-                    </div>
-                    <div className="wordingShipList">
-                        <p>{subNews.source.name}</p>
-                        <p>{subNews.publishedAt}</p>
+                    <div className="boxWordingNewsList"/*column*/>
+                      <div className="wordingNewsList">
+                          <p>{subNews.title}</p>
+                      </div>
+                      <div className="wordingNewsList">
+                          <p>{subNews.description}</p>
+                      </div>
+                      <div className="wordingFootNewsList">
+                          <p>{subNews.source.name}</p>
+                          <p>{subNews.publishedAt}</p>
+                      </div>
                     </div>
                   </div>
                 </Link>
-                <ButtonAdd subNews={subNews} news={news} 
-                  index={index} 
-                  favorites={favorites} setNewsInFavorite={setNewsInFavorite}
-                />   
+                <div className="boxAddBtn">
+                  <ButtonAdd subNews={subNews} news={news} 
+                    index={index} 
+                    favorites={favorites} setNewsInFavorite={setNewsInFavorite}
+                  />  
+                </div>
             </li>    
           </ul>
         </>
@@ -70,5 +75,32 @@ const TechNewsLists=({apiKeys,formatStartDate,formatEndDate,
     })
   )
 }
+
+TechNewsLists.propTypes = {
+  apiKeys: PropTypes.string.isRequired,
+  formatStartDate: PropTypes.string.isRequired,
+  formatEndDate: PropTypes.string.isRequired,
+  news: PropTypes.objectOf(
+    PropTypes.shape({
+        totalArticles : PropTypes.number,
+        articles: PropTypes.arrayOf(
+            PropTypes.shape({
+                image:PropTypes.string,
+                title:PropTypes.string,
+                content:PropTypes.string,
+                url:PropTypes.string,
+                author:PropTypes.string,
+                publishedAt:PropTypes.string,
+                source:PropTypes.objectOf({
+                  name: PropTypes.string,
+                })
+            })
+        ),
+    }),
+  ),
+  setNews: PropTypes.func.isRequired,
+  favorites: PropTypes.array,
+  setNewsInFavorite: PropTypes.func.isRequired
+};
 
 export default TechNewsLists;

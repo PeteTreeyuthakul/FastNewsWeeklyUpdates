@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
+import ButtonAdd from "./ButtonAddToFavorite";
+import PropTypes from 'prop-types';
 
 
 const SearchNewsLists=({searchCategory,
   searchNews,setSearchNews,
-  apiKeys,formatStartDate,formatEndDate}) =>{
+  apiKeys,formatStartDate,formatEndDate,
+  favorites, setNewsInFavorite}) =>{
 
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -40,32 +43,67 @@ const SearchNewsLists=({searchCategory,
         searchNews.articles.map((subNews,index) => {
             return(
             <>     
-                <ul>
-                <li className="listShip" key={index}>
-                    <Link to ={`News/search/${index}`}>
-                    <div className="containerShip">
-                        <div className="wordingShipList">
-                            <img src={subNews.urlToImage}></img>  
-                        </div>
-                        <div className="wordingShipList">
+              <ul>
+                <li className="newsList" key={index}>
+                  <Link to ={`News/search/${index}`}>
+                    <div className="mainNewsList"/*row*/>
+                      <div className="boxImageNewsList">
+                          <img src={subNews.image} alt="No Image"></img>  
+                      </div>
+                      <div className="boxWordingNewsList"/*column*/>
+                        <div className="wordingNewsList">
                             <p>{subNews.title}</p>
                         </div>
-                        <div className="wordingShipList">
+                        <div className="wordingNewsList">
                             <p>{subNews.description}</p>
                         </div>
-                        <div className="wordingShipList">
+                        <div className="wordingFootNewsList">
                             <p>{subNews.source.name}</p>
                             <p>{subNews.publishedAt}</p>
                         </div>
+                      </div>
                     </div>
-                    </Link>
-                    
+                  </Link>
+                  <div className="boxAddBtn">
+                    <ButtonAdd subNews={subNews} news={searchNews} 
+                      index={index} 
+                      favorites={favorites} setNewsInFavorite={setNewsInFavorite}
+                    />  
+                  </div>    
                 </li>    
-                </ul>
+              </ul>
             </>
             )
         })
     )
 }
+
+SearchNewsLists.propTypes = {
+  searchCategory: PropTypes.string.isRequired,
+  searchNews: PropTypes.objectOf(
+    PropTypes.shape({
+        totalArticles : PropTypes.number,
+        articles: PropTypes.arrayOf(
+            PropTypes.shape({
+                image:PropTypes.string,
+                title:PropTypes.string,
+                content:PropTypes.string,
+                url:PropTypes.string,
+                author:PropTypes.string,
+                publishedAt:PropTypes.string,
+                source:PropTypes.objectOf({
+                  name: PropTypes.string,
+                })
+            })
+        ),
+    }),
+  ),
+  setSearchNews: PropTypes.func.isRequired,
+  apiKeys: PropTypes.string.isRequired,
+  formatStartDate: PropTypes.string.isRequired,
+  formatEndDate: PropTypes.string.isRequired,
+  favorites: PropTypes.array,
+  setNewsInFavorite: PropTypes.func.isRequired
+};
 
 export default SearchNewsLists;
