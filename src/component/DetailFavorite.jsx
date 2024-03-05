@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import {useParams } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 
 function DetailFavorite({favorites}) {
   const { id } = useParams();
@@ -8,29 +7,45 @@ function DetailFavorite({favorites}) {
   return (
     <div>
         <h2 className='topicDetail'>NEWS DETAIL</h2>
-        <div className="wordingShipList">
-            <img src={favorites[id].urlToImage}></img>  
+        <div className="imageDetail">
+            <img src={favorites[id].image} alt="No Image"></img>  
         </div>
-        <div className="wordingDetailShipList">
+        <div className="wordingDetail">
             <p>{favorites[id].title}</p>
         </div>
-        <div className="wordingDetailShipList">
+        <div className="wordingDetail">
             <p>{favorites[id].content}</p>
         </div>
-        <div className="wordingDetailShipList">
+        <div className="wordingNameDetail">
             <label>source:</label>
             <p>{favorites[id].source.name}</p>
         </div>
-        <div className="wordingDetailShipList">
+        <div className="wordingURLDetail">
         <label>Link:</label>
             <p>{favorites[id].url}</p>
         </div>
-        <div className="wordingShipList">
+        <div className="wordingFootDetail">
             <p>{favorites[id].author}</p>
             <p>{favorites[id].publishedAt}</p>
         </div>
     </div>
   );
+}
+
+DetailSearchNews.propType ={
+    favorites: PropTypes.arrayOf(
+        PropTypes.shape({
+            image:PropTypes.string,
+            title:PropTypes.string,
+            content:PropTypes.string,
+            url:PropTypes.string,
+            author:PropTypes.string,
+            publishedAt:PropTypes.string,
+            source:PropTypes.objectOf({
+                name: PropTypes.string,
+            })
+        })
+    ),
 }
 
 export default DetailFavorite;

@@ -6,15 +6,14 @@ const FavoriteList= ({favorites,setNewsInFavorite}) =>{
     if( favorites!== ""){
         return(
             favorites.map((subFavorite,index)=>{
-    
                 return(
-                    <li key={index} className="liCart">
+                    <li key={index} className="favoriteList">
                         <Link to ={`favorites/${index}`}>
-                            <div className="containerShip">
-                                <div className="wordingShipList">
-                                    <img src={subFavorite.urlToImage}></img>  
+                            <div className="containerFavList">
+                                <div className="imageFavList">
+                                    <img src={subFavorite.urlToImage} alt="No Image"></img>  
                                 </div>
-                                <div className="wordingShipList">
+                                <div className="wordingFavList">
                                     <p>{subFavorite.title}</p>
                                 </div>
                             </div> 
@@ -31,17 +30,24 @@ const FavoriteList= ({favorites,setNewsInFavorite}) =>{
             })
     
         )
-    }
-    
+    }    
 }
 
-/*
-FavoriteList.protoTypes ={
-    items:PropTypes.object.isRequired,
-    index: PropTypes.number.isRequired,
-    setItemInCart: PropTypes.func.isRequired,
-    addItemToCart: PropTypes.func.isRequired,
-}
-*/
+FavoriteList.propTypes = {
+    favorites: PropTypes.arrayOf(
+        PropTypes.shape({
+            image:PropTypes.string,
+            title:PropTypes.string,
+            content:PropTypes.string,
+            url:PropTypes.string,
+            author:PropTypes.string,
+            publishedAt:PropTypes.string,
+            source:PropTypes.objectOf({
+                name: PropTypes.string,
+            })
+        })
+    ),
+    setNewsInFavorite: PropTypes.func.isRequired
+};
 
 export default FavoriteList;

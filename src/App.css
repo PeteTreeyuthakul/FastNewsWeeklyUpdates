@@ -1,6 +1,187 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+}
+
+body{
+  background-color: lightgray;
+}
+
+.mainHeader{
+  display: flex;
+  width: 100%;
+  height: 100px;
+  background-color: rgb(188, 184, 184);
+}
+
+.topicHeader{
+  color: black;
+  text-align: left;
+  font-size: 30px;
+  font-weight: bold;
+  vertical-align:middle;
+}
+
+.mainFavorite{
+  background-color: rgb(188, 184, 184);
+  align-items: flex-end;
+  position: sticky;
+}
+
+.mainFavorite{
+  vertical-align: middle;
+}
+
+.favoriteBtn{
+  color: whitesmoke;
+  font-size: 20px;
+  background-color: rgb(54, 50, 50);
+  width: 150px;
+  height: 40px;
+  vertical-align:middle;
+}
+
+.topicTech{
+  color: black;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  height: 50px;
+}
+
+.containerNewsList{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+.containerSearch{
+  padding: 5px;
+  margin: 5px;
+}
+
+.containerSearch label{
+  font-size: 12px;
+  padding: 5px;
+}
+
+.searchSelect{
+  font-size: 12px;
+}
+
+.searchBtn{
+  background-color: grey;
+  font-size: 12px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.newsList{
+  border: black 1px solid;
+  background-color: white;
+  border-radius: 3% ;
+  width: 450px;
+  height: 220px;
+  list-style-type: none;
+}
+
+.mainNewsList{
+  display: flex;
+  width: 400px;
+  height: 180px;
+  padding: 5px;
+  flex-direction: row;
+}
+
+.boxImageNewsList{
+  width: 150px;
+  height: 180px;
+}
+
+.boxImageNewsList img{
+  object-fit:cover;
+  width: 150px;
+  height: 180px;
+  border-radius: 10%; 
+}
+
+.boxWordingNewsList{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 180px;
+  padding: 5px;
+}
+
+
+.wordingNewsList{
+  text-align: left;
+  color: black;
+  font-weight: bold;
+  font-size: 11px;
+  margin: 5px;
+  width: 100%;
+  text-wrap: warp;
+
+}
+
+.wordingFootNewsList{
+  text-align: left;
+  color: black;
+  font-size: 10px;
+  margin-left: 5px;
+  padding-left: 5px;
+  margin: 0px;
+  height: 10px;
+
+}
+
+.favoriteList{
+
+}
+
+.containerFavList{
+
+}
+
+.imageFavList{
+
+}
+
+.wordingFavList{
+
+}
+
+.btnDelete{
+
+}
+
+.topicDetail{
+
+}
+
+.imageDetail{
+
+}
+
+.wordingDetail{
+
+}
+
+.wordingNameDetail{
+
+}
+
+.wordingURLDetail{
+
+}
+
+.wordingFootDetail{
+
+}
+
+.boxAdd{
+
 }
