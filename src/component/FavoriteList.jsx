@@ -42,9 +42,11 @@ FavoriteList.propTypes = {
             url:PropTypes.string,
             author:PropTypes.string,
             publishedAt:PropTypes.string,
-            source:PropTypes.objectOf({
+            source:PropTypes.shape({
                 name: PropTypes.string,
+                url: PropTypes.string,
             })
+            
         })
     ),
     setNewsInFavorite: PropTypes.func.isRequired

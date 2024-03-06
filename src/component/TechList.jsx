@@ -44,11 +44,11 @@ const TechNewsLists=({apiKeys,formatStartDate,formatEndDate,
           <ul>
             <li className="newsList" key={index}>
                 <Link className="newsListLink" to ={`News/${index}`}>
-                  <div className="mainNewsList"/*row*/>
+                  <div className="mainNewsList">
                     <div className="boxImageNewsList">
                         <img src={subNews.image} alt="No Image"></img>  
                     </div>
-                    <div className="boxWordingNewsList"/*column*/>
+                    <div className="boxWordingNewsList">
                       <div className="wordingTitleNewsList">
                           <p>{subNews.title}</p>
                       </div>
@@ -80,26 +80,7 @@ TechNewsLists.propTypes = {
   apiKeys: PropTypes.string.isRequired,
   formatStartDate: PropTypes.string.isRequired,
   formatEndDate: PropTypes.string.isRequired,
-  news: PropTypes.objectOf(
-    PropTypes.shape({
-        totalArticles : PropTypes.number,
-        articles: PropTypes.arrayOf(
-            PropTypes.shape({
-                image:PropTypes.string,
-                title:PropTypes.string,
-                content:PropTypes.string,
-                url:PropTypes.string,
-                author:PropTypes.string,
-                publishedAt:PropTypes.string,
-                source:PropTypes.objectOf({
-                  name: PropTypes.string,
-                })
-            })
-        ),
-    }),
-  ),
   setNews: PropTypes.func.isRequired,
-  favorites: PropTypes.array,
   setNewsInFavorite: PropTypes.func.isRequired
 };
 

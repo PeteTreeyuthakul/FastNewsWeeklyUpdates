@@ -3,7 +3,6 @@ import TechNewsLists from './TechList';
 import SearchNewsList from './SearchList';
 import FavoriteList from './FavoriteList';
 import PropTypes from 'prop-types';
-//import bootstrap from 'bootstrap';
 
 const HomePage=({apiKeys, formatStartDate, formatEndDate,
     searchCategory,setSearchCategory,
@@ -39,7 +38,7 @@ const HomePage=({apiKeys, formatStartDate, formatEndDate,
                 <h1 className='topicHeader'>NEWS WEEKLY UPDATE </h1>
             </div>
 
-            <div className={`mainFavorite`} /*Float*/ >
+            <div className={`mainFavorite`}>
                 <div className='containerFavoriteBtn'>
                     <button className='favoriteBtn'
                         onClick={()=>hiddenFavorite()}>Favorite
@@ -53,7 +52,7 @@ const HomePage=({apiKeys, formatStartDate, formatEndDate,
             
             <h1 className='topicTech'>TECH UPDATE </h1>
 
-            <div className='containerNewsList' /*row warp*/>
+            <div className='containerNewsList'>
                 <TechNewsLists apiKeys={apiKeys} 
                     formatStartDate={formatStartDate} 
                     formatEndDate={formatEndDate}
@@ -79,7 +78,7 @@ const HomePage=({apiKeys, formatStartDate, formatEndDate,
                 <button className='searchBtn' onClick={handleSearch}>search</button>
             </div>
 
-            <div className='containerNewsList'/*row  warp*/>
+            <div className='containerNewsList'>
                 {isSearchPerformed && (
                     <SearchNewsList
                         searchCategory={searchCategory}
@@ -101,13 +100,9 @@ HomePage.propTypes = {
     apiKeys: PropTypes.string.isRequired,
     formatStartDate: PropTypes.string.isRequired,
     formatEndDate: PropTypes.string.isRequired,
-    searchCategory: PropTypes.string.isRequired,
     setSearchCategory: PropTypes.func.isRequired,
-    searchNews: PropTypes.object,
     setSearchNews: PropTypes.func.isRequired,
-    news: PropTypes.object,
     setNews: PropTypes.func.isRequired,
-    favorites: PropTypes.array,
     setNewsInFavorite: PropTypes.func.isRequired
   };
   

@@ -5,20 +5,43 @@ const addNewsToFavorite=(
     setNewsInFavorite,
     news,
     index)=>{
-
         const updateNewsInList = [news.articles[index]];
-        setNewsInFavorite([...favorites,...updateNewsInList])
-
+        setNewsInFavorite([...favorites,...updateNewsInList]);
     }
 
 addNewsToFavorite.propTypes = {
-    favorites: PropTypes.array,
-    setNewsInFavorite: PropTypes.func.isRequired,
-    news: PropTypes.objectOf(
+    favorites: PropTypes.arrayOf(
         PropTypes.shape({
-            articles:PropTypes.array
+            image:PropTypes.string,
+            title:PropTypes.string,
+            content:PropTypes.string,
+            url:PropTypes.string,
+            author:PropTypes.string,
+            publishedAt:PropTypes.string,
+            source:PropTypes.shape({
+                name: PropTypes.string,
+                url: PropTypes.string,
+            })
         })
-    ).isRequired,
+    ),
+    setNewsInFavorite: PropTypes.func.isRequired,
+    news: PropTypes.shape({
+        totalArticles : PropTypes.number,
+        articles: PropTypes.arrayOf(
+            PropTypes.shape({
+                image:PropTypes.string,
+                title:PropTypes.string,
+                content:PropTypes.string,
+                url:PropTypes.string,
+                author:PropTypes.string,
+                publishedAt:PropTypes.string,
+                source:PropTypes.shape({
+                    name: PropTypes.string,
+                    url: PropTypes.string,
+                })
+            })
+        ),
+    }).isRequired,
     index: PropTypes.number.isRequired
 };
 
