@@ -7,13 +7,18 @@ function DetailNews({news}) {
   return (
     <div>
         <h2 className='topicDetail'>NEWS DETAIL</h2>
+        <div className="wordingTitleDetail">
+            <p>{news.articles[id].title}</p>
+        </div>
         <div className="imageDetail">
             <img src={news.articles[id].image} alt="No Image"></img>  
         </div>
         <div className="wordingDetail">
-            <p>{news.articles[id].title}</p>
+            <label>Description:</label>
+            <p>{news.articles[id].description}</p>
         </div>
         <div className="wordingDetail">
+            <label>Content:</label>
             <p>{news.articles[id].content}</p>
         </div>
         <div className="wordingNameDetail">

@@ -7,11 +7,11 @@ function DetailSearchNews({searchNews}) {
   return (
     <div>
         <h2 className='topicDetail'>NEWS DETAIL</h2>
-        <div className="imageDetail">
-            <img src={searchNews.articles[id].image} alt="No Image"></img>  
-        </div>
         <div className="wordingDetail">
             <p>{searchNews.articles[id].title}</p>
+        </div>
+        <div className="imageDetail">
+            <img src={searchNews.articles[id].image} alt="No Image"></img>  
         </div>
         <div className="wordingDetail">
             <p>{searchNews.articles[id].content}</p>
