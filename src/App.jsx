@@ -3,7 +3,6 @@ import {Routes, Route} from "react-router-dom";
 import {useState} from "react";
 import HomePage from './component/HomePage';
 import DetailNews from './component/DetailNews';
-import DetailSearchNews from './component/DetailSearchNews';
 import DetailFavorite from './component/DetailFavorite';
 
 function App() {
@@ -40,7 +39,7 @@ function App() {
           setNewsInFavorite={setNewsInFavorite}/>}/>
 
         <Route path="/News/:id" element={<DetailNews news={news}/>}/>
-        <Route path="/News/search/:id" element={<DetailSearchNews searchNews={searchNews}/>}/>
+        <Route path="/News/search/:id" element={<DetailNews news={searchNews}/>}/>
         <Route path="/favorites/:id" element={<DetailFavorite favorites={favorites}/>}/>
       </Routes>
     </>

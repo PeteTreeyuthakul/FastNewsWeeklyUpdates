@@ -45,14 +45,38 @@ const ButtonAdd =({subNews, news, index,
 }
 
 ButtonAdd.propTypes = {
-    subNews: PropTypes.objectOf(
-        PropTypes.shape({
-          title: PropTypes.string,
-        }),
-      ).isRequired,
-    news: PropTypes.object.isRequired,
+    subNews: PropTypes.shape({
+        title: PropTypes.string,
+        description: PropTypes.string.isRequired,
+        content: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        publishedAt: PropTypes.string.isRequired,
+        source: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired
+        })
+    }).isRequired,
+    
+    news: PropTypes.shape({
+        totalArticles : PropTypes.number,
+        articles: PropTypes.arrayOf(
+            PropTypes.shape({
+                image:PropTypes.string,
+                title:PropTypes.string,
+                content:PropTypes.string,
+                url:PropTypes.string,
+                author:PropTypes.string,
+                publishedAt:PropTypes.string,
+                source:PropTypes.shape({
+                    name: PropTypes.string,
+                    url: PropTypes.string,
+                })
+            })
+        ),
+    }),
     index: PropTypes.number.isRequired,
-    favorites: PropTypes.array,
+    favorites: PropTypes.array.isRequired,
     setNewsInFavorite: PropTypes.func.isRequired
 };
 

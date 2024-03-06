@@ -38,24 +38,23 @@ function DetailNews({news}) {
 }
 
 DetailNews.prototype ={
-    news: PropTypes.objectOf(
-        PropTypes.shape({
-            totalArticles : PropTypes.number,
-            articles: PropTypes.arrayOf(
-                PropTypes.shape({
-                    image:PropTypes.string,
-                    title:PropTypes.string,
-                    content:PropTypes.string,
-                    url:PropTypes.string,
-                    author:PropTypes.string,
-                    publishedAt:PropTypes.string,
-                    source:PropTypes.objectOf({
-                        name: PropTypes.string,
-                    })
+    news: PropTypes.shape({
+        totalArticles : PropTypes.number,
+        articles: PropTypes.arrayOf(
+            PropTypes.shape({
+                image:PropTypes.string,
+                title:PropTypes.string,
+                content:PropTypes.string,
+                url:PropTypes.string,
+                author:PropTypes.string,
+                publishedAt:PropTypes.string,
+                source:PropTypes.shape({
+                    name: PropTypes.string,
+                    url: PropTypes.string,
                 })
-            ),
-        }),
-    ).isRequired,
+            })
+        ),
+    }).isRequired,
 }
 
 export default DetailNews;

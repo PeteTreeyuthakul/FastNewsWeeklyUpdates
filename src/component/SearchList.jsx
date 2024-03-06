@@ -11,7 +11,6 @@ const SearchNewsLists=({searchCategory,
 
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  console.log(searchCategory)
 
   useEffect(() => {
     fetch(`https://gnews.io/api/v4/top-headlines?category=${searchCategory}&country=us&from=${formatStartDate}&to=${formatEndDate}&apikey=${apiKeys}`)
@@ -45,13 +44,13 @@ const SearchNewsLists=({searchCategory,
             <>     
               <ul>
                 <li className="newsList" key={index}>
-                  <Link to ={`News/search/${index}`}>
-                    <div className="mainNewsList"/*row*/>
+                  <Link className="newsListLink" to ={`News/search/${index}`}>
+                    <div className="mainNewsList">
                       <div className="boxImageNewsList">
                           <img src={subNews.image} alt="No Image"></img>  
                       </div>
-                      <div className="boxWordingNewsList"/*column*/>
-                        <div className="wordingNewsList">
+                      <div className="boxWordingNewsList">
+                        <div className="wordingTitleNewsList">
                             <p>{subNews.title}</p>
                         </div>
                         <div className="wordingNewsList">
@@ -80,24 +79,6 @@ const SearchNewsLists=({searchCategory,
 
 SearchNewsLists.propTypes = {
   searchCategory: PropTypes.string.isRequired,
-  searchNews: PropTypes.objectOf(
-    PropTypes.shape({
-        totalArticles : PropTypes.number,
-        articles: PropTypes.arrayOf(
-            PropTypes.shape({
-                image:PropTypes.string,
-                title:PropTypes.string,
-                content:PropTypes.string,
-                url:PropTypes.string,
-                author:PropTypes.string,
-                publishedAt:PropTypes.string,
-                source:PropTypes.objectOf({
-                  name: PropTypes.string,
-                })
-            })
-        ),
-    }),
-  ),
   setSearchNews: PropTypes.func.isRequired,
   apiKeys: PropTypes.string.isRequired,
   formatStartDate: PropTypes.string.isRequired,
