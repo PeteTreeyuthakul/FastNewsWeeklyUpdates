@@ -65,8 +65,8 @@ const HomePage=({apiKeys, formatStartDate, formatEndDate,
             </div>
 
             <div className="containerSearch">
-                <label>Category:</label>
-                <select className="searchSelect" name="type-item" id="type-item"
+                <label htmlFor="searchSelect">Category:</label>
+                <select className="searchSelect" name="type-item" id="searchSelect"
                     onChange={(event)=>setSearchCategory(event.target.value)}
                     defaultValue={"choose"}
                     value={searchCategory}>

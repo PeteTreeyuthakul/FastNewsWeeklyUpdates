@@ -9,9 +9,9 @@ const FavoriteList= ({favorites,setNewsInFavorite}) =>{
                 return(
                     <li key={index} className="favoriteList">
                         <Link to ={`favorites/${index}`}>
-                            <div className="containerFavList">
+                            <div className="boxFavList">
                                 <div className="imageFavList">
-                                    <img src={subFavorite.urlToImage} alt="No Image"></img>  
+                                    <img src={subFavorite.image} alt="No Image"></img>  
                                 </div>
                                 <div className="wordingFavList">
                                     <p>{subFavorite.title}</p>

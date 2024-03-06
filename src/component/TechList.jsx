@@ -43,13 +43,13 @@ const TechNewsLists=({apiKeys,formatStartDate,formatEndDate,
         <>     
           <ul>
             <li className="newsList" key={index}>
-                <Link to ={`News/${index}`}>
+                <Link className="newsListLink" to ={`News/${index}`}>
                   <div className="mainNewsList"/*row*/>
                     <div className="boxImageNewsList">
                         <img src={subNews.image} alt="No Image"></img>  
                     </div>
                     <div className="boxWordingNewsList"/*column*/>
-                      <div className="wordingNewsList">
+                      <div className="wordingTitleNewsList">
                           <p>{subNews.title}</p>
                       </div>
                       <div className="wordingNewsList">

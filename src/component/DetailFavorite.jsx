@@ -7,11 +7,11 @@ function DetailFavorite({favorites}) {
   return (
     <div>
         <h2 className='topicDetail'>NEWS DETAIL</h2>
-        <div className="imageDetail">
-            <img src={favorites[id].image} alt="No Image"></img>  
-        </div>
         <div className="wordingDetail">
             <p>{favorites[id].title}</p>
+        </div>
+        <div className="imageDetail">
+            <img src={favorites[id].image} alt="No Image"></img>  
         </div>
         <div className="wordingDetail">
             <p>{favorites[id].content}</p>
@@ -32,7 +32,7 @@ function DetailFavorite({favorites}) {
   );
 }
 
-DetailSearchNews.propType ={
+DetailFavorite.propType ={
     favorites: PropTypes.arrayOf(
         PropTypes.shape({
             image:PropTypes.string,
