@@ -177,8 +177,8 @@ body{
 }
 
 .boxAdd {
-position: relative;
-z-index: 0;
+  position: relative;
+  z-index: 0;
 }
 
 .boxAdd button{
