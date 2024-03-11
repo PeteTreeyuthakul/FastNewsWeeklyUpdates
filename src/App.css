@@ -29,6 +29,7 @@ body{
   flex-direction: column;
   position: sticky;
   top: 0px;
+  z-index: 1;
 }
 
 .containerFavoriteBtn{
@@ -177,12 +178,14 @@ body{
 
 .boxAdd {
 position: relative;
+z-index: 0;
 }
 
 .boxAdd button{
   position: absolute;
   left: 10px;
   margin: 5px;
+  z-index: 0;
 }
 
 .containerFavoriteList{
