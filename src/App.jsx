@@ -11,7 +11,7 @@ function App() {
   const [favorites,setNewsInFavorite] = useState([]);
   const [news, setNews] = useState();
 
-  const apiKeys = '6a40dfe7fefa4ccf78fdca616d52403e';
+  const apiKeys = 'API Key';
 
   let currentDate = new Date();
 
