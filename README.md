@@ -1,13 +1,19 @@
-- The answers to the following questions Fill out each of these with a few sentences (50 characters minimum):
-  - What worked well in this project (what was easy/straightforward)?
-  Ans: To retrieve dataset from api and display it on page.
+"Fast News Weekly Updates is an application use React framework to create front end, to fetch news from API based on user preferences category of news. This tool helps users find news that updated in most recent week.
 
-  - What didn't work well (what was difficult to understand or parse)?
-  Ans:The testing did not work.
+Features
+Interface: Users can select category of news that users are interesting.
+Prerequisites
+Before running this application, make sure you have the following dependencies installed:
+API Key: You'll need to set up your own API key for GNews API.
 
-  - What changes would you make to this project now that it's deployed?
-  Ans: The styling on the page appears to be quite simple.
+How to Run the Code
+1. Command npm run dev:
+You will see list of technology list.
+2. Select Category of News:
+You can select category by click drop down list, then clisk search button
+3. Add News to Your Favorite List:
+Click Add To Favorites List button in the news you are interesting, and click favorite button to show your list. 
 
-  - What would you improve and/or add to this project now that it's deployed?"
-  Ans : Add function login to firebase and store favorite list in firebase.
+![image](https://github.com/user-attachments/assets/a203e7a8-8acc-4765-ac3f-ddec402a99fe)
+
 
